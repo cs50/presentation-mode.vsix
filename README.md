@@ -1,8 +1,8 @@
 # Presentation Mode
 
-Keyboard short-cut to toggle presentation mode: `Ctrl+Alt+P`
+### Keyboard short-cut to toggle presentation mode: `Ctrl+Alt+P`
 
-Workspace settings in `settings.json` to take effects when presentation mode is on:
+### Workspace settings in `.vscode/settings.json` to take effects when presentation mode is on:
 
 ```json
 "presentation-mode.active": {
@@ -31,7 +31,7 @@ Workspace settings in `settings.json` to take effects when presentation mode is 
 }
 ```
 
-Workspace settings to take effects when presentation mode is off:
+### Workspace settings to take effects when presentation mode is off:
 
 ```json
 "presentation-mode.inactive": {
@@ -42,4 +42,17 @@ Workspace settings to take effects when presentation mode is off:
     "workbench.statusBar.visible": true,
     "window.zoomLevel": 0
 }
+```
+
+### Package Extension and Install
+
+If the command-line tool `Visual Studio Code Extensions` is not installed, run this command to install `vsce` globally:
+```
+npm install -g vsce
+```
+Install all npm dependencies, package extension, and install:
+```
+npm install
+vsce package
+code --install-extension presentation-mode-0.0.1.vsix
 ```
