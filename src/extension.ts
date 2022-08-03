@@ -2,14 +2,13 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
-    const activePartialOnStates = ['on', 'from_off_to_on', 'from_on_to_off'];
-
-    if (activePartialOnStates
+    const partialOnStates = ['on', 'from_off_to_on', 'from_on_to_off'];
+    if (partialOnStates
         .includes(getState(context, "cs50_presentation_mode_state") || "undefined")) {
 
         // If a workspace is reloaded for any reason (e.g., VS Code crashes) while in
         // presentation mode, restore user workspace configuration from backup.
-        restoreBackupConfig(context);
+        deactivatePresentationMode(context);
         applyInactiveConfig(context);
     }
     else if (getState(context, "cs50_presentation_mode_state") === undefined) {
@@ -20,11 +19,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand('presentation-mode.toggle', () => {
         if (getState(context, "cs50_presentation_mode_state") === "off") {
-            applyActiveConfig(context);
+            activatePresentationMode(context);
         } else {
-            restoreBackupConfig(context);
-            applyInactiveConfig(context);
+            deactivatePresentationMode(context);
         }
+    }));
+
+    context.subscriptions.push(vscode.commands.registerCommand('presentation-mode.reset', () => {
+        deactivatePresentationMode(context);
+        context.workspaceState.update("cs50_presentation_mode_state", "off");
     }));
 }
 
@@ -32,7 +35,7 @@ function getState(context: vscode.ExtensionContext, entry: string): string | und
     return context.workspaceState.get(entry);
 }
 
-function applyActiveConfig(context: vscode.ExtensionContext) {
+function activatePresentationMode(context: vscode.ExtensionContext) {
 
     // Don't activate presentation mode if there is no setting configured.
     const userConfig = getWorkspaceConfig('presentation-mode.active');
@@ -71,7 +74,7 @@ function applyActiveConfig(context: vscode.ExtensionContext) {
     context.workspaceState.update("cs50_presentation_mode_state", "on");
 }
 
-function restoreBackupConfig(context: vscode.ExtensionContext) {
+function deactivatePresentationMode(context: vscode.ExtensionContext) {
 
     // Deactivate presentation mode
     context.workspaceState.update("cs50_presentation_mode_state", "from_on_to_off");

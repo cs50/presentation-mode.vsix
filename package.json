@@ -22,8 +22,13 @@
     "contributes": {
         "commands": [
             {
-                "command": "presentation-mode.toggle",
                 "title": "Toggle Presentation Mode",
+                "command": "presentation-mode.toggle",
+                "category": "View"
+            },
+            {
+                "title": "Reset Presentation Mode",
+                "command": "presentation-mode.reset",
                 "category": "View"
             }
         ],
@@ -60,6 +65,10 @@
 			{
 				"key": "ctrl+alt+p",
 				"command": "presentation-mode.toggle"
+			},
+            {
+				"key": "ctrl+alt+r",
+				"command": "presentation-mode.reset"
 			}
 		]
     },
