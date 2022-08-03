@@ -8,13 +8,13 @@ export function activate(context: vscode.ExtensionContext) {
         .includes(getState(context, "cs50_presentation_mode_state") || "undefined")) {
 
         // If a workspace is reloaded for any reason (e.g., VS Code crashes) while in
-        // presentation mode, restore user workspace configuration from backup
+        // presentation mode, restore user workspace configuration from backup.
         restoreBackupConfig(context);
         applyInactiveConfig(context);
     }
     else if (getState(context, "cs50_presentation_mode_state") === undefined) {
 
-        // If the presentation state is not set, default presentation state to off
+        // If the presentation state is not set, default presentation state to off.
         context.workspaceState.update("cs50_presentation_mode_state", "off");
     }
 
@@ -33,11 +33,16 @@ function getState(context: vscode.ExtensionContext, entry: string): string | und
 }
 
 function applyActiveConfig(context: vscode.ExtensionContext) {
+
+    // Don't activate presentation mode if there is no setting configured.
+    const userConfig = getWorkspaceConfig('presentation-mode.active');
+    if (Object.keys(userConfig).length === 0) { return; }
+
+    // Activate presentation mode
     context.workspaceState.update("cs50_presentation_mode_state", "from_off_to_on");
     const workspace = vscode.ConfigurationTarget.Workspace;
     const config = vscode.workspace.getConfiguration('', null);
     const configPrev = vscode.workspace.getConfiguration('', null);
-    const userConfig = getWorkspaceConfig('presentation-mode.active');
     let configBackup = JSON.parse("{}");
 
     try {
@@ -61,31 +66,14 @@ function applyActiveConfig(context: vscode.ExtensionContext) {
     } catch (e) {
         console.log(e);
     }
+
+    // Presentation mode is activated, set state to "on".
     context.workspaceState.update("cs50_presentation_mode_state", "on");
 }
 
-function applyInactiveConfig(context: vscode.ExtensionContext) {
-    const workspace = vscode.ConfigurationTarget.Workspace;
-    const config = vscode.workspace.getConfiguration('', null);
-    const userConfig = getWorkspaceConfig('presentation-mode.inactive');
-
-    try {
-        for (let [key, value] of Object.entries(userConfig)) {
-            if (key === "commands") {
-                const commands = JSON.parse(JSON.stringify(value));
-                for (let i in commands) {
-                    vscode.commands.executeCommand(commands[i]);
-                }
-            } else {
-                config.update(key, value, workspace);
-            }
-        }
-    } catch (e) {
-        console.log(e);
-    }
-}
-
 function restoreBackupConfig(context: vscode.ExtensionContext) {
+
+    // Deactivate presentation mode
     context.workspaceState.update("cs50_presentation_mode_state", "from_on_to_off");
     const workspace = vscode.ConfigurationTarget.Workspace;
     const config = vscode.workspace.getConfiguration('', null);
@@ -106,7 +94,33 @@ function restoreBackupConfig(context: vscode.ExtensionContext) {
         console.log(e);
     }
     applyInactiveConfig(context);
+
+    // Presentation mode is deactivated, set state to "off".
     context.workspaceState.update("cs50_presentation_mode_state", "off");
+}
+
+function applyInactiveConfig(context: vscode.ExtensionContext) {
+    const userConfig = getWorkspaceConfig('presentation-mode.inactive');
+    if (Object.keys(userConfig).length === 0) { return; }
+
+    const workspace = vscode.ConfigurationTarget.Workspace;
+    const config = vscode.workspace.getConfiguration('', null);
+
+
+    try {
+        for (let [key, value] of Object.entries(userConfig)) {
+            if (key === "commands") {
+                const commands = JSON.parse(JSON.stringify(value));
+                for (let i in commands) {
+                    vscode.commands.executeCommand(commands[i]);
+                }
+            } else {
+                config.update(key, value, workspace);
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function getWorkspaceConfig(config: string) {
