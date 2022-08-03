@@ -7,49 +7,5 @@
         "out": true // set this to false to include "out" folder in search results
     },
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-    "typescript.tsc.autoDetect": "off",
-    "presentation-mode.active": {
-        "commands": [
-            "workbench.action.closeSidebar",
-        ],
-        "editor.fontSize": 16,
-        "workbench.activityBar.visible": false,
-        "workbench.statusBar.visible": false,
-        "workbench.colorTheme": "GitHub Dark Default",
-        "workbench.colorCustomizations": {
-            "[GitHub Dark Default]": {
-                "activityBar.background": "#000",
-                "editor.background": "#000",
-                "sideBar.background": "#000",
-                "terminal.background": "#000"
-            },
-            "[GitHub Light Default]": {
-                "activityBar.background": "#fff",
-                "editor.background": "#fff",
-                "sideBar.background": "#fff",
-                "terminal.background": "#fff"
-            }
-        },
-        "window.zoomLevel": 2
-    },
-    "presentation-mode.inactive": {
-        "commands": [
-            "workbench.action.focusSideBar",
-        ],
-        "editor.fontSize": 12,
-        "workbench.statusBar.visible": true,
-        "window.zoomLevel": 0
-    },
-    "presentation-mode.configBackup": {
-        "editor.fontSize": 12,
-        "workbench.activityBar.visible": "undefined",
-        "workbench.statusBar.visible": true,
-        "workbench.colorTheme": "GitHub Dark Dimmed",
-        "workbench.colorCustomizations": "undefined",
-        "window.zoomLevel": 0
-    },
-    "workbench.colorTheme": "GitHub Dark Dimmed",
-    "window.zoomLevel": 0,
-    "editor.fontSize": 12,
-    "workbench.statusBar.visible": true,
+    "typescript.tsc.autoDetect": "off"
 }
