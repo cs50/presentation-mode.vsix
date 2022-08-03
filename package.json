@@ -1,76 +1,84 @@
 {
-  "name": "presentation-mode",
-	"displayName": "Presentation Mode",
-	"description": "",
-	"version": "0.0.1",
-	"publisher": "CS50",
-	"repository": "https://github.com/cs50/cs50.vsix",
-	"engines": {
-		"vscode": "^1.69.0"
-	},
-	"categories": [
-		"Education", "Themes", "Visualization"
-	],
-	"activationEvents": [
+    "name": "presentation-mode",
+    "displayName": "Presentation Mode",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "CS50",
+    "repository": "https://github.com/cs50/cs50.vsix",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Education",
+        "Themes",
+        "Visualization"
+    ],
+    "activationEvents": [
         "onCommand:presentation-mode.toggle"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "presentation-mode.toggle",
+                "title": "Toggle Presentation Mode"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "Presentation Mode (Active)",
+                "properties": {
+                    "presentation-mode.active": {
+                        "type": "object",
+                        "description": "Workspace customizations to be applied when presentation mode is active."
+                    }
+                }
+            },
+            {
+                "title": "Presentation Mode (Inactive)",
+                "properties": {
+                    "presentation-mode.inactive": {
+                        "type": "object",
+                        "description": "Workspace customizations to be applied when presentation is not active."
+                    }
+                }
+            },
+            {
+                "title": "Workspace configuration backup)",
+                "properties": {
+                    "presentation-mode.configBackup": {
+                        "type": "object",
+                        "description": "A backup of user's workspace configuration."
+                    }
+                }
+            }
+        ],
+		"keybindings": [
 			{
-				"command": "presentation-mode.toggle",
-				"title": "Toggle Presentation Mode"
-			}
-		],
-		"configuration": [
-			{
-				"title": "Presentation Mode (Active)",
-				"properties": {
-					"presentation-mode.active": {
-						"type": "object",
-						"description": "Workspace customizations to be applied when presentation mode is active."
-					}
-				}
-			},
-			{
-				"title": "Presentation Mode (Inactive)",
-				"properties": {
-					"presentation-mode.inactive": {
-						"type": "object",
-						"description": "Workspace customizations to be applied when presentation is not active."
-					}
-				}
-			},
-			{
-				"title": "Workspace configuration backup)",
-				"properties": {
-					"presentation-mode.configBackup": {
-						"type": "object",
-						"description": "A backup of user's workspace configuration."
-					}
-				}
+				"key": "ctrl+alt+p",
+				"command": "presentation-mode.toggle"
 			}
 		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.69.0",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "16.x",
-		"@typescript-eslint/eslint-plugin": "^5.27.0",
-		"@typescript-eslint/parser": "^5.27.0",
-		"eslint": "^8.16.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.2",
-		"@vscode/test-electron": "^2.1.3"
-	}
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.69.0",
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "@typescript-eslint/eslint-plugin": "^5.27.0",
+        "@typescript-eslint/parser": "^5.27.0",
+        "eslint": "^8.16.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.7.2",
+        "@vscode/test-electron": "^2.1.3"
+    }
 }

@@ -12,6 +12,7 @@
         "commands": [
             "workbench.action.closeSidebar",
         ],
+        "editor.fontSize": 16,
         "workbench.activityBar.visible": false,
         "workbench.statusBar.visible": false,
         "workbench.colorTheme": "GitHub Dark Default",
@@ -29,21 +30,26 @@
                 "terminal.background": "#fff"
             }
         },
-        "window.zoomLevel": 3
+        "window.zoomLevel": 2
     },
     "presentation-mode.inactive": {
         "commands": [
-            "workbench.action.focusSideBar"
+            "workbench.action.focusSideBar",
         ],
+        "editor.fontSize": 12,
+        "workbench.statusBar.visible": true,
         "window.zoomLevel": 0
     },
     "presentation-mode.configBackup": {
+        "editor.fontSize": 12,
         "workbench.activityBar.visible": "undefined",
-        "workbench.statusBar.visible": "undefined",
+        "workbench.statusBar.visible": true,
         "workbench.colorTheme": "GitHub Light Default",
         "workbench.colorCustomizations": "undefined",
         "window.zoomLevel": 0
     },
     "workbench.colorTheme": "GitHub Light Default",
     "window.zoomLevel": 0,
+    "editor.fontSize": 12,
+    "workbench.statusBar.visible": true,
 }
