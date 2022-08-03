@@ -23,12 +23,13 @@
         "commands": [
             {
                 "command": "presentation-mode.toggle",
-                "title": "Toggle Presentation Mode"
+                "title": "Toggle Presentation Mode",
+                "category": "View"
             }
         ],
         "configuration": [
             {
-                "title": "Presentation Mode (Active)",
+                "title": "Presentation Mode Active Settings",
                 "properties": {
                     "presentation-mode.active": {
                         "type": "object",
@@ -37,7 +38,7 @@
                 }
             },
             {
-                "title": "Presentation Mode (Inactive)",
+                "title": "Presentation Mode Inactive Settings",
                 "properties": {
                     "presentation-mode.inactive": {
                         "type": "object",
@@ -46,7 +47,7 @@
                 }
             },
             {
-                "title": "Workspace configuration backup)",
+                "title": "User Workspace Settings Backup",
                 "properties": {
                     "presentation-mode.configBackup": {
                         "type": "object",
