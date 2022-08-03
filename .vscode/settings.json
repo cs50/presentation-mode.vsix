@@ -1,9 +1,14 @@
-# Presentation Mode
-
-Presentation Mode by CS50
-
-```json
-"presentation-mode.active": {
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "out": false // set this to true to hide the "out" folder with the compiled JS files
+    },
+    "search.exclude": {
+        "out": true // set this to false to include "out" folder in search results
+    },
+    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+    "typescript.tsc.autoDetect": "off",
+    "presentation-mode.active": {
         "commands": [
             "workbench.action.closeSidebar",
         ],
@@ -32,4 +37,13 @@ Presentation Mode by CS50
         ],
         "window.zoomLevel": 0
     },
-```
+    "presentation-mode.configBackup": {
+        "workbench.activityBar.visible": "undefined",
+        "workbench.statusBar.visible": "undefined",
+        "workbench.colorTheme": "GitHub Light Default",
+        "workbench.colorCustomizations": "undefined",
+        "window.zoomLevel": 0
+    },
+    "workbench.colorTheme": "GitHub Light Default",
+    "window.zoomLevel": 0,
+}
