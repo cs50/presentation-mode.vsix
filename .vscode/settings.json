@@ -43,7 +43,7 @@
     "presentation-mode.configBackup": {
         "editor.fontSize": 12,
         "workbench.activityBar.visible": "undefined",
-        "workbench.statusBar.visible": true,
+        "workbench.statusBar.visible": false,
         "workbench.colorTheme": "GitHub Light Default",
         "workbench.colorCustomizations": "undefined",
         "window.zoomLevel": 0
