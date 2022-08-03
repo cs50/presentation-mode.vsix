@@ -106,10 +106,6 @@ function applyInactiveConfig(context: vscode.ExtensionContext) {
     const userConfig = getWorkspaceConfig('presentation-mode.inactive');
     if (Object.keys(userConfig).length === 0) { return; }
 
-    const workspace = vscode.ConfigurationTarget.Workspace;
-    const config = vscode.workspace.getConfiguration('', null);
-
-
     try {
         for (let [key, value] of Object.entries(userConfig)) {
             if (key === "commands") {
@@ -117,9 +113,12 @@ function applyInactiveConfig(context: vscode.ExtensionContext) {
                 for (let i in commands) {
                     vscode.commands.executeCommand(commands[i]);
                 }
-            } else {
-                config.update(key, value, workspace);
             }
+
+            // Ignore updating settings for now.
+            // else {
+            //     config.update(key, value, workspace);
+            // }
         }
     } catch (e) {
         console.log(e);

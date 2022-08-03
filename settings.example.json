@@ -26,9 +26,6 @@
     "presentation-mode.inactive": {
         "commands": [
             "workbench.action.focusSideBar"
-        ],
-        "editor.fontSize": 12,
-        "workbench.statusBar.visible": true,
-        "window.zoomLevel": 0
+        ]
     }
 }

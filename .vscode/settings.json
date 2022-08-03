@@ -7,5 +7,42 @@
         "out": true // set this to false to include "out" folder in search results
     },
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-    "typescript.tsc.autoDetect": "off"
+    "typescript.tsc.autoDetect": "off",
+    "presentation-mode.active": {
+        "commands": [
+            "workbench.action.closeSidebar"
+        ],
+        "editor.fontSize": 16,
+        "workbench.activityBar.visible": false,
+        "workbench.statusBar.visible": false,
+        "workbench.colorTheme": "GitHub Dark Default",
+        "workbench.colorCustomizations": {
+            "[GitHub Dark Default]": {
+                "activityBar.background": "#000",
+                "editor.background": "#000",
+                "sideBar.background": "#000",
+                "terminal.background": "#000"
+            },
+            "[GitHub Light Default]": {
+                "activityBar.background": "#fff",
+                "editor.background": "#fff",
+                "sideBar.background": "#fff",
+                "terminal.background": "#fff"
+            }
+        },
+        "window.zoomLevel": 2
+    },
+    "presentation-mode.inactive": {
+        "commands": [
+            "workbench.action.focusSideBar"
+        ]
+    },
+    "presentation-mode.configBackup": {
+        "editor.fontSize": "undefined",
+        "workbench.activityBar.visible": "undefined",
+        "workbench.statusBar.visible": "undefined",
+        "workbench.colorTheme": "undefined",
+        "workbench.colorCustomizations": "undefined",
+        "window.zoomLevel": "undefined"
+    }
 }
