@@ -4,7 +4,7 @@
     "description": "",
     "version": "0.0.1",
     "publisher": "CS50",
-    "repository": "https://github.com/cs50/cs50.vsix",
+    "repository": "https://github.com/cs50/presentation-mode.vsix",
     "engines": {
         "vscode": "^1.69.0"
     },
