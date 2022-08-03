@@ -15,7 +15,8 @@
         "Visualization"
     ],
     "activationEvents": [
-        "onCommand:presentation-mode.toggle"
+        "onCommand:presentation-mode.toggle",
+        "onStartupFinished"
     ],
     "main": "./out/extension.js",
     "contributes": {
