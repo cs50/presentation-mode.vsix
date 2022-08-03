@@ -25,59 +25,79 @@ export function deactivate() {
 function applyActiveConfig() {
     const workspace = vscode.ConfigurationTarget.Workspace;
     const config = vscode.workspace.getConfiguration('', null);
-
-    // Get user settings
-    const userConfig = JSON.parse(JSON.stringify(vscode.workspace.getConfiguration('presentation-mode.active', null)));
-
-    // Get current workspace setting
-    const workspaceConfig = vscode.workspace.getConfiguration('', null);
-
-    // Create config backup
+    const configPrev = vscode.workspace.getConfiguration('', null);
+    const userConfig = getWorkspaceConfig('presentation-mode.active');
     let configBackup = JSON.parse("{}");
-    for (let [key, value] of Object.entries(userConfig)) {
-        if (key === "commands") {
-            const commands = JSON.parse(JSON.stringify(value));
-            for (let i in commands) {
-                vscode.commands.executeCommand(commands[i]);
+
+    try {
+        for (let [key, value] of Object.entries(userConfig)) {
+            if (key === "commands") {
+                const commands = JSON.parse(JSON.stringify(value));
+                for (let i in commands) {
+                    vscode.commands.executeCommand(commands[i]);
+                }
+                continue;
             }
-            continue;
+            else if (configPrev.inspect(key)?.workspaceValue !== undefined) {
+                configBackup[key] = configPrev.inspect(key)?.workspaceValue;
+            }
+            else {
+                configBackup[key] = "undefined";
+            }
+            config.update(key, value, workspace);
         }
-        else if (workspaceConfig.inspect(key)?.workspaceValue !== undefined) {
-            configBackup[key] = workspaceConfig.inspect(key)?.workspaceValue;
-        }
-        else {
-            configBackup[key] = "undefined";
-        }
-        config.update(key, value, workspace);
+        config.update("presentation-mode.configBackup", configBackup, workspace);
+    } catch (e) {
+        console.log(e);
     }
-    config.update("presentation-mode.configBackup", configBackup, workspace);
 }
 
 function applyInactiveConfig() {
     const workspace = vscode.ConfigurationTarget.Workspace;
     const config = vscode.workspace.getConfiguration('', null);
-    const userConfig = JSON.parse(JSON.stringify(vscode.workspace.getConfiguration('presentation-mode.inactive', null)));
-    for (let [key, value] of Object.entries(userConfig)) {
-        if (key === "commands") {
-            const commands = JSON.parse(JSON.stringify(value));
-            for (let i in commands) {
-                vscode.commands.executeCommand(commands[i]);
+    const userConfig = getWorkspaceConfig('presentation-mode.inactive');
+
+    try {
+        for (let [key, value] of Object.entries(userConfig)) {
+            if (key === "commands") {
+                const commands = JSON.parse(JSON.stringify(value));
+                for (let i in commands) {
+                    vscode.commands.executeCommand(commands[i]);
+                }
+            } else {
+                config.update(key, value, workspace);
             }
-        } else {
-            config.update(key, value, workspace);
         }
+    } catch (e) {
+        console.log(e);
     }
-    vscode.commands.executeCommand("workbench.action.focusSideBar");
 }
 
 function restoreBackupConfig() {
     const workspace = vscode.ConfigurationTarget.Workspace;
     const config = vscode.workspace.getConfiguration('', null);
-    const configBackup = JSON.parse(JSON.stringify(vscode.workspace.getConfiguration('presentation-mode.configBackup', null)));
-    for (let [key, value] of Object.entries(configBackup)) {
-        if (value === "undefined") {
-            value = undefined;
+    const configBackup = getWorkspaceConfig('presentation-mode.configBackup');
+
+    try {
+        for (let [key, value] of Object.entries(configBackup)) {
+            try {
+                if (value === "undefined") {
+                    value = undefined;
+                }
+                config.update(key, value, workspace);
+            } catch (e) {
+                console.log(e);
+            }
         }
-        config.update(key, value, workspace);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function getWorkspaceConfig(config: string) {
+    try {
+        return JSON.parse(JSON.stringify(vscode.workspace.getConfiguration(config, null)));
+    } catch (e) {
+        return undefined;
     }
 }
