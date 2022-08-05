@@ -5,7 +5,7 @@
     "icon": "images/presentation_mode.png",
     "publisher": "CS50",
     "repository": "https://github.com/cs50/presentation-mode.vsix",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.69.0"
     },

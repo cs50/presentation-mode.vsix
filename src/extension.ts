@@ -2,9 +2,9 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
+
     const partialOnStates = ['on', 'from_off_to_on', 'from_on_to_off'];
-    if (partialOnStates
-        .includes(getState(context, "cs50_presentation_mode_state") || "undefined")) {
+    if (partialOnStates.includes(getState(context, "cs50_presentation_mode_state") || "undefined")) {
 
         // If a workspace is reloaded for any reason (e.g., VS Code crashes) while in
         // presentation mode, restore user workspace configuration from backup.
@@ -18,6 +18,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
 	context.subscriptions.push(vscode.commands.registerCommand('presentation-mode.toggle', () => {
+
+        // Toggle presentation mode based on current state
         if (getState(context, "cs50_presentation_mode_state") === "off") {
             activatePresentationMode(context);
         } else {
@@ -26,14 +28,18 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand('presentation-mode.reset', () => {
+
+        // Force setting presentation mode to "off" and restore user backup settings
         deactivatePresentationMode(context);
         context.workspaceState.update("cs50_presentation_mode_state", "off");
     }));
 }
 
+
 function getState(context: vscode.ExtensionContext, entry: string): string | undefined {
     return context.workspaceState.get(entry);
 }
+
 
 function activatePresentationMode(context: vscode.ExtensionContext) {
 
@@ -74,6 +80,7 @@ function activatePresentationMode(context: vscode.ExtensionContext) {
     context.workspaceState.update("cs50_presentation_mode_state", "on");
 }
 
+
 function deactivatePresentationMode(context: vscode.ExtensionContext) {
 
     // Deactivate presentation mode
@@ -102,6 +109,7 @@ function deactivatePresentationMode(context: vscode.ExtensionContext) {
     context.workspaceState.update("cs50_presentation_mode_state", "off");
 }
 
+
 function applyInactiveConfig(context: vscode.ExtensionContext) {
     const userConfig = getWorkspaceConfig('presentation-mode.inactive');
     if (Object.keys(userConfig).length === 0) { return; }
@@ -114,16 +122,12 @@ function applyInactiveConfig(context: vscode.ExtensionContext) {
                     vscode.commands.executeCommand(commands[i]);
                 }
             }
-
-            // Ignore updating settings for now.
-            // else {
-            //     config.update(key, value, workspace);
-            // }
         }
     } catch (e) {
         console.log(e);
     }
 }
+
 
 function getWorkspaceConfig(config: string) {
     try {

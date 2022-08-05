@@ -1,8 +1,14 @@
 # Presentation Mode
 
-### Keyboard short-cut to toggle presentation mode: `Ctrl+Alt+P`
+Bring presentation mode to VS Code.
 
-### Workspace settings in `.vscode/settings.json` to take effects when presentation mode is on:
+## Keyboard Shortcut
+
+`Ctrl+Alt+P`
+
+## Workspace Settings
+
+Workspace customizations to take effect when presentation mode is on:
 
 ```json
 "presentation-mode.active": {
@@ -31,7 +37,9 @@
 }
 ```
 
-### Workspace commands to execute when presentation mode is off:
+## Workspace Commands
+
+Workspace commands to execute when presentation mode is off:
 
 ```json
 "presentation-mode.inactive": {
@@ -43,7 +51,7 @@
 
 This is useful and necessary because some workspace UI states/behaviors can not be easily monitored and controlled via workspace settings. Specifying commands to be executed when presentation mode is toggled ensures the workspace layout is deterministically restored.
 
-### Package Extension and Install
+## Package Extension and Install
 
 If the command-line tool `Visual Studio Code Extensions` is not installed, run this command to install `vsce` globally:
 ```
