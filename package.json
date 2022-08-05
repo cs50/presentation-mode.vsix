@@ -1,5 +1,5 @@
 {
-    "name": "presentation-mode",
+    "name": "vscode-presentation-mode",
     "displayName": "Presentation Mode",
     "description": "Provides Presentation Mode in VS Code.",
     "icon": "images/presentation_mode.png",
