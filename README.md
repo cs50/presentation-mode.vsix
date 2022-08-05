@@ -51,7 +51,7 @@ Workspace commands to execute when presentation mode is off:
 
 This is useful and necessary because some workspace UI states/behaviors can not be easily monitored and controlled via workspace settings. Specifying commands to be executed when presentation mode is toggled ensures the workspace layout is deterministically restored.
 
-## Package Extension and Install
+## Package Extension and Install (dev only)
 
 If the command-line tool `Visual Studio Code Extensions` is not installed, run this command to install `vsce` globally:
 ```
