@@ -16,6 +16,9 @@ Workspace customizations to take effect when presentation mode is on:
         "workbench.action.closeSidebar",
     ],
     "editor.fontSize": 16,
+    "editor.matchBrackets": "never",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.verticalScrollbarSize": 0,
     "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": false,
     "workbench.colorTheme": "GitHub Dark Default",
@@ -23,14 +26,10 @@ Workspace customizations to take effect when presentation mode is on:
         "[GitHub Dark Default]": {
             "activityBar.background": "#000",
             "editor.background": "#000",
+            "editor.lineHighlightBackground": "#0000",
+            "editor.lineHighlightBorder": "#0000",
             "sideBar.background": "#000",
             "terminal.background": "#000"
-        },
-        "[GitHub Light Default]": {
-            "activityBar.background": "#fff",
-            "editor.background": "#fff",
-            "sideBar.background": "#fff",
-            "terminal.background": "#fff"
         }
     },
     "window.zoomLevel": 2
