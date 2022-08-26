@@ -13,7 +13,7 @@ Workspace customizations to take effect when presentation mode is on:
 ```json
 "presentation-mode.active": {
     "commands": [
-        "workbench.action.closeSidebar",
+        "workbench.action.closeSidebar"
     ],
     "editor.fontSize": 16,
     "editor.matchBrackets": "never",
@@ -28,8 +28,18 @@ Workspace customizations to take effect when presentation mode is on:
             "editor.background": "#000",
             "editor.lineHighlightBackground": "#0000",
             "editor.lineHighlightBorder": "#0000",
+            "panel.background": "#000",
             "sideBar.background": "#000",
             "terminal.background": "#000"
+        },
+        "[GitHub Light Default]": {
+            "activityBar.background": "#fff",
+            "editor.background": "#fff",
+            "editor.lineHighlightBackground": "#fff0",
+            "editor.lineHighlightBorder": "#fff0",
+            "panel.background": "#fff",
+            "sideBar.background": "#fff",
+            "terminal.background": "#fff"
         }
     },
     "window.zoomLevel": 2
@@ -43,7 +53,7 @@ Workspace commands to execute when presentation mode is off:
 ```json
 "presentation-mode.inactive": {
     "commands": [
-        "workbench.action.focusSideBar",
+        "workbench.action.focusSideBar"
     ]
 }
 ```
