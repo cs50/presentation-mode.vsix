@@ -28,6 +28,7 @@ Workspace customizations to take effect when presentation mode is on:
             "editor.background": "#000",
             "editor.lineHighlightBackground": "#0000",
             "editor.lineHighlightBorder": "#0000",
+            "editorWhitespace.foreground": "#59A5FC",
             "panel.background": "#000",
             "sideBar.background": "#000",
             "terminal.background": "#000"
@@ -37,6 +38,7 @@ Workspace customizations to take effect when presentation mode is on:
             "editor.background": "#fff",
             "editor.lineHighlightBackground": "#fff0",
             "editor.lineHighlightBorder": "#fff0",
+            "editorWhitespace.foreground": "#1167D7",
             "panel.background": "#fff",
             "sideBar.background": "#fff",
             "terminal.background": "#fff"
