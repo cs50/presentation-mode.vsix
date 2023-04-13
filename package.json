@@ -5,9 +5,9 @@
     "icon": "images/presentation_mode.png",
     "publisher": "CS50",
     "repository": "https://github.com/cs50/presentation-mode.vsix",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "engines": {
-        "vscode": "^1.69.0"
+        "vscode": "^1.77.0"
     },
     "categories": [
         "Education",
@@ -61,16 +61,16 @@
                 }
             }
         ],
-		"keybindings": [
-			{
-				"key": "ctrl+alt+p",
-				"command": "presentation-mode.toggle"
-			},
+        "keybindings": [
             {
-				"key": "ctrl+alt+r",
-				"command": "presentation-mode.reset"
-			}
-		]
+                "key": "ctrl+alt+p",
+                "command": "presentation-mode.toggle"
+            },
+            {
+                "key": "ctrl+alt+r",
+                "command": "presentation-mode.reset"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -81,16 +81,17 @@
         "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
-        "@types/vscode": "^1.69.0",
-        "@types/glob": "^7.2.0",
-        "@types/mocha": "^9.1.1",
-        "@types/node": "16.x",
-        "@typescript-eslint/eslint-plugin": "^5.27.0",
-        "@typescript-eslint/parser": "^5.27.0",
-        "eslint": "^8.16.0",
-        "glob": "^8.0.3",
-        "mocha": "^10.0.0",
-        "typescript": "^4.7.2",
-        "@vscode/test-electron": "^2.1.3"
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.77.0",
+        "@typescript-eslint/eslint-plugin": "^5.58.0",
+        "@typescript-eslint/parser": "^5.58.0",
+        "@vscode/test-electron": "^2.3.0",
+        "@vscode/vsce": "^2.19.0",
+        "eslint": "^8.38.0",
+        "glob": "^10.0.0",
+        "mocha": "^10.2.0",
+        "typescript": "^5.0.4"
     }
 }
